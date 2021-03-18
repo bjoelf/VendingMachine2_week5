@@ -11,13 +11,26 @@ namespace VendingMachineApp.Model
         public int Calories { get; private set; }
         public bool Eatable { get; private set; }
         public string Consume { get; private set; }
+        public int Price { get; private set; }
 
-        public Product(string name, int calories, bool eatable, string consume)
+        public Product(string name, int calories, bool eatable, string consume, int price)
         {
             Name = name;
             Calories = calories;
             Eatable = eatable;
             Consume = consume;
+            Price = price;
         }
+
+        public string Examine()
+        {
+            return $"{Consume} + Price is: {Price}";
+        }
+        public string Use()
+        {
+            string use = (this.Eatable) ? "Delicious!":"Not for consumtion";
+            return $"{Consume} + Price is: {Price}";
+        }
+
     }
 }

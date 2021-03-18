@@ -7,13 +7,17 @@ namespace VendingMachineApp.Data
 {
     public class VendingMachine : IVending
     {
-        private static int sumCredit;
-        private static List<Product> purchases;
+        //private static int sumCredit;
+        private static List<Product> purchases = new List<Product>();
+        private static int credit = 0;
+        private Money m = new Money();
+
+        public int Credit { get { return credit;  } }
 
         public int[] EndTransaction()
         {
-            int payout = sumCredit;
-            sumCredit = 0;
+            int payout = Credit;
+            credit = 0;
             int[] change = Money.GiveChange(payout);
             return change;
         }
@@ -21,14 +25,21 @@ namespace VendingMachineApp.Data
         {
             if (Money.Exist(amount))
             {
-                sumCredit += amount;
+                credit += amount;
             }
-            return sumCredit;
+            return Credit;
         }
-        public string Purchase(Product product)
+        public Product Purchase(Product product)
         {
-            purchases.Add(product);
-            return product.Consume;
+            if (product.Price <= Credit)
+            {
+                purchases.Add(product);
+                return product;
+            }
+            else
+            {
+                return null;
+            }
         }
         public List<Product> ShowAll()
         {
