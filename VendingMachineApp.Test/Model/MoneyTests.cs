@@ -11,7 +11,7 @@ namespace VendingMachineApp.Test.Model
         [Fact]
         public void Exist()
         {
-            //Money m = new Money();
+            Money m = new Money();
 
             bool _exists = Money.Exist(100);
             Assert.True(_exists);
