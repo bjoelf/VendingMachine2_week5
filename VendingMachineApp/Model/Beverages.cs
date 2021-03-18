@@ -6,8 +6,8 @@ namespace VendingMachineApp.Model
 {
     public class Beverages : Product
     {
-        public decimal AlcoholContent { get; private set; }
-        public Beverages(decimal alcoholcontent, string name, int calories, bool eatable, string consume) : base(name,calories,eatable,consume)
+        public double AlcoholContent { get; private set; }
+        public Beverages(double alcoholcontent, string name, int calories, bool eatable, string consume) : base(name,calories,eatable,consume)
         {
             AlcoholContent = alcoholcontent;
         }
