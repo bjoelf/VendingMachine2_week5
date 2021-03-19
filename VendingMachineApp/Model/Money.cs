@@ -6,9 +6,6 @@ namespace VendingMachineApp.Model
 {
     public class Money
     {
-        /// <summary>
-        /// Money denominations should be defined as an array of integers (readonly).
-        /// </summary>
         private static int[] _denominations;
         public static int[] Denominations { get; private set; }
         public Money()
@@ -17,10 +14,6 @@ namespace VendingMachineApp.Model
         }
         public static bool Exist(int val)
         {
-            //if (_denominations == null) {
-            //    _denominations = new int[8] { 1, 5, 10, 20, 50, 100, 500, 1000 };
-            //}
-
             int exists = Array.IndexOf(_denominations, val);
             if (exists < 0)
             {
@@ -34,11 +27,22 @@ namespace VendingMachineApp.Model
         public static int[] GiveChange(int payout)
         {
             int[] change = new int[0];
+            if (payout == 0) return change;
 
-
-
-
-            return change;
+            int denSeq = _denominations.Length -1;
+            do
+            {
+                if (payout < _denominations[denSeq]) {
+                    denSeq--;
+                }
+                else
+                {
+                    Array.Resize(ref change, change.Length + 1);
+                    change[change.Length-1] = _denominations[denSeq];
+                    payout = payout - _denominations[denSeq];
+                    if (payout == 0) return change;
+                }
+            } while (true);
         }
     }
 }

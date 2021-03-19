@@ -31,7 +31,7 @@ namespace VendingMachineApp.Model
         }
         public string Use()
         {
-            string use = (this.Eatable) ? "Delicious!":"Not for consumtion";
+            string use = (this.Eatable) ? "Delicious!":"Not for consumtion.";
             return $"{Usage} {use}";
         }
     }

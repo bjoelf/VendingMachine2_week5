@@ -23,23 +23,5 @@ namespace VendingMachineApp.Model
                 return base.Examine();
             }
         }
-
-        public new string Use()
-        {
-            string use = (this.Eatable) ? "Delicious!" : "Not for consumtion";
-            return $"{Description} + Price is: {Price}";
-        }
-
-        public new string ToString()
-        {
-            if (this.AlcoholContent == 0)
-            {
-                return base.ToString();
-            }
-            else
-            {
-                return base.ToString() + $" Not for kids. Alcohol content: {AlcoholContent} ";
-            }
-        }
     }
 }

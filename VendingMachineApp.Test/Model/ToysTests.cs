@@ -12,11 +12,13 @@ namespace VendingMachineApp.Test.Model
         [Fact]
         public void ExamineAndUse()
         {
-            Toys rubicscube = new Toys(5, "Rubic's cube", 0, false, "Rubik's Cube is a 3D combination puzzle invented in 1974 by Hungarian sculptor and professor of architecture Ernő Rubik", "Twist and turn in enternity", 40);
-            Debug.Print(rubicscube.Use());
+            Toys rubicscube = new Toys(10, "Rubic's cube", 0, false, "Rubik's Cube is a 3D combination puzzle invented in 1974 by Hungarian sculptor and professor of architecture Ernő Rubik", "Twist and turn in enternity. ", 40);
             Debug.Print(rubicscube.Examine());
+            Debug.Print(rubicscube.Use());
 
-            Toys woodenblocks = new Toys(5, "Wooden blocks", 0, false, "They’re nothing but natural wood, which means our babies can drool on them as much as they want with no concern for toxins", "Play with these daily, the creative potential is near endless", 40);
+            Toys woodenblocks = new Toys(3, "Wooden blocks", 0, false, "They’re nothing but natural wood, which means our babies can drool on them as much as they want with no concern for toxins", "Play with these daily, the creative potential is near endless. ", 40);
+            Debug.Print(woodenblocks.Examine());
+            Debug.Print(woodenblocks.Use());
 
             Assert.NotEqual(rubicscube.Use().Length, rubicscube.Examine().Length);
             Assert.NotEqual(woodenblocks.Use().Length, woodenblocks.Examine().Length);

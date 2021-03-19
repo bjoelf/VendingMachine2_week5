@@ -11,15 +11,10 @@ namespace VendingMachineApp.Model
         {
             AgeLimit = agelimit;
         }
-
         public new string Examine()
         {
-            return $"{Description}. Not recommended below age: {AgeLimit}. Price is: {Price}";
+            return base.Examine() +  $"Not recommended below age: {AgeLimit}.";
         }
-        public new string Use()
-        {
-            string use = (this.Eatable) ? "Delicious!" : "Not for consumtion";
-            return $"{Description} {use}";
-        }
+
     }
 }

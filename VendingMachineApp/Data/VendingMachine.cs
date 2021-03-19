@@ -7,18 +7,17 @@ namespace VendingMachineApp.Data
 {
     public class VendingMachine : IVending
     {
-        //private static int sumCredit;
         private static List<Product> purchases = new List<Product>();
         private static int credit = 0;
-        private Money m = new Money();
+        private readonly Money money = new Money();
 
         public int Credit { get { return credit;  } }
 
         public int[] EndTransaction()
         {
             int payout = Credit;
-            credit = 0;
             int[] change = Money.GiveChange(payout);
+            credit = 0;
             return change;
         }
         public int InsertMoney(int amount)
@@ -34,6 +33,7 @@ namespace VendingMachineApp.Data
             if (product.Price <= Credit)
             {
                 purchases.Add(product);
+                credit -= product.Price;
                 return product;
             }
             else

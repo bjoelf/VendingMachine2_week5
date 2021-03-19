@@ -30,7 +30,6 @@ namespace VendingMachineApp.Test.Data
         {
             VendingMachine vm = new VendingMachine();
             int[] sumCredit = vm.EndTransaction();
-
             vm.InsertMoney(1000);
 
             Beverages beer = new Beverages(0.055, "Bryggmästarens", 99, true, "Bryggmästarens Premium gold är ett exklusivt öl framtaget med förstklassiga råvaror", "Drink it cold", 25);
@@ -48,10 +47,21 @@ namespace VendingMachineApp.Test.Data
 
             Toys rubicscube = new Toys(5, "Rubic's cube", 0, false, "Needs no explanaion","Twist and turn in enternity", 40);
             vm.Purchase(rubicscube);
-            
+
+            foreach (Product item in vm.ShowAll())
+            {
+                Debug.Print(item.Examine());
+            }
+            Debug.Print("-------------------------------");
+            foreach (Product item in vm.ShowAll())
+            {
+                Debug.Print(item.Use());
+            }
+
+            Assert.Equal(6, vm.ShowAll().Count);
         }
         [Fact]
-        public void PurchaseAndShowAll()
+        public void Purchase()
         {
             VendingMachine vm = new VendingMachine();
             int[] sumCredit = vm.EndTransaction();
@@ -73,11 +83,31 @@ namespace VendingMachineApp.Test.Data
 
             Toys rubicscube = new Toys(5, "Rubic's cube", 0, false, "Rubik's Cube is a 3D combination puzzle invented in 1974 by Hungarian sculptor and professor of architecture Ernő Rubik", "Twist and turn in enternity", 40);
             vm.Purchase(rubicscube);
+
+            Assert.Equal(6, vm.ShowAll().Count);
         }
+
         [Fact]
         public void EndTransaction()
         {
+            VendingMachine vm = new VendingMachine();
+            int[] sumCredit = vm.EndTransaction();
+            vm.InsertMoney(1000);
 
+            Food hotdish = new Food("Thai", "Hot Curry", 850, true, "Traditional thai dish", "Eat while warm. Drink milk if too hot", 125);
+            vm.Purchase(hotdish);
+
+            Food dessert = new Food("Italian", "tiramisu", 200, true, "Classic italian dessert", "Enjoy this delight with a cappuchino", 30);
+            vm.Purchase(dessert);
+
+            sumCredit = vm.EndTransaction();
+
+            int sum = 0;
+            foreach (int item in sumCredit)
+            {
+                sum += item;
+            }
+            Assert.Equal(845, sum);
         }
     }
 }

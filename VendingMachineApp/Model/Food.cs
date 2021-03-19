@@ -11,9 +11,10 @@ namespace VendingMachineApp.Model
         {
             Cuisine = cuisine;
         }
-        public new string ToString()
+
+        public new string Examine()
         {
-            return base.ToString() + $"Cuisine: {this.Cuisine}";
+                return $"Cuisine: {Cuisine} " + base.Examine();
         }
     }
 }
