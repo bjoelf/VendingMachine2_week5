@@ -87,8 +87,9 @@ namespace VendingMachineApp.Test.Data
             {
                 Debug.Print(item.Examine());
             }
+            int howmany = vm.ShowAll(beer).Count;
 
-            Assert.Equal(3, vm.ShowAll(beer).Count);
+            Assert.NotEqual(vm.Purchase(beer), vm.Purchase(coffee));
         }
         [Fact]
         public void Purchase()
@@ -114,7 +115,7 @@ namespace VendingMachineApp.Test.Data
             Toys rubicscube = new Toys(5, "Rubic's cube", 0, false, "Rubik's Cube is a 3D combination puzzle invented in 1974 by Hungarian sculptor and professor of architecture Ernő Rubik", "Twist and turn in enternity", 40);
             vm.Purchase(rubicscube);
 
-            Assert.Equal(6, vm.ShowAll().Count);
+            Assert.NotEqual(vm.Purchase(beer), vm.Purchase(dessert));
         }
         [Fact]
         public void EndTransaction()
