@@ -61,7 +61,7 @@ namespace VendingMachineApp.Test.Data
             Assert.Equal(6, vm.ShowAll().Count);
         }
         [Fact]
-        public void ShowAllBeverages()
+        public void ShowBeverages()
         {
             VendingMachine vm = new VendingMachine();
             int[] sumCredit = vm.EndTransaction();
@@ -83,12 +83,12 @@ namespace VendingMachineApp.Test.Data
             Toys rubicscube = new Toys(5, "Rubic's cube", 0, false, "Needs no explanaion", "Twist and turn in enternity", 40);
             vm.Purchase(rubicscube);
 
-            foreach (Product item in vm.ShowAllBeverages())
+            foreach (Product item in vm.ShowAll(beer))
             {
                 Debug.Print(item.Examine());
             }
 
-            Assert.Equal(3, vm.ShowAllBeverages().Count);
+            Assert.Equal(3, vm.ShowAll(beer).Count);
         }
         [Fact]
         public void Purchase()

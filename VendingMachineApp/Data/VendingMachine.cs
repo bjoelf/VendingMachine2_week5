@@ -44,20 +44,20 @@ namespace VendingMachineApp.Data
         {
             return purchases;
         }
-        public List<Beverages> ShowAllBeverages()
+        public List<Beverages> ShowAll(Beverages b)
         {
-            List<Beverages> bev = new List<Beverages>();
+            List<Beverages> Bev = new List<Beverages>();
 
             foreach (Product prod in purchases)
             {
                 if (prod is Beverages)
                 {
-                    bev.Add(prod as Beverages);
+                    Bev.Add(prod as Beverages);
                 }
             }
-            return bev;
+            return Bev;
         }
-        public List<Food> ShowAllFood()
+        public List<Food> ShowAll(Food f)
         {
             List<Food> eat = new List<Food>();
 
