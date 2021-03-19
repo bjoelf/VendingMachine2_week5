@@ -12,9 +12,7 @@ namespace VendingMachineApp.Model
         public bool Eatable { get; private set; }
         public string Description { get; private set; }
         public string Usage { get; private set; }
-
         public int Price { get; private set; }
-
         public Product(string name, int calories, bool eatable, string consume, string usage, int price)
         {
             Name = name;
@@ -24,7 +22,6 @@ namespace VendingMachineApp.Model
             Price = price;
             Usage = usage;
         }
-
         public string Examine()
         {
             return $"{Description}. Price is: {Price}";

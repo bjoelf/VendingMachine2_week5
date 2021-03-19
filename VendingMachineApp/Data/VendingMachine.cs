@@ -12,7 +12,6 @@ namespace VendingMachineApp.Data
         private readonly Money money = new Money();
 
         public int Credit { get { return credit;  } }
-
         public int[] EndTransaction()
         {
             int payout = Credit;
@@ -44,6 +43,32 @@ namespace VendingMachineApp.Data
         public List<Product> ShowAll()
         {
             return purchases;
+        }
+        public List<Beverages> ShowAllBeverages()
+        {
+            List<Beverages> bev = new List<Beverages>();
+
+            foreach (Product prod in purchases)
+            {
+                if (prod is Beverages)
+                {
+                    bev.Add(prod as Beverages);
+                }
+            }
+            return bev;
+        }
+        public List<Food> ShowAllFood()
+        {
+            List<Food> eat = new List<Food>();
+
+            foreach (Product prod in purchases)
+            {
+                if (prod is Food)
+                {
+                    eat.Add(prod as Food);
+                }
+            }
+            return eat;
         }
     }
 }
